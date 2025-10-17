@@ -1,34 +1,26 @@
-# deploy.yml dosyasını düzeltelim
-cat > .github/workflows/deploy.yml << 'EOF'
-name: Deploy Logseq Graph to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Install logseq-publish
-        run: npm install -g logseq-publish
-
-      - name: Build static site
-        run: logseq-publish --base /logseq-seyirdefterim --output public
-
-      - name: Deploy to GitHub Pages
+        
+      - name: Create simple site
+        run: |
+          mkdir -p public
+          echo "<h1>Logseq Notlarım</h1>" > public/index.html
+          echo "<p>Site yakında hazır olacak!</p>" >> public/index.html
+          cp hoşgeldin.md public/
+          
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-EOF
