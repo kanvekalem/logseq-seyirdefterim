@@ -1,0 +1,24 @@
+# Logseq geçici dosyaları
+logseq/bak/
+logseq/.recycle/
+logseq/.history/
+logseq/metadata.edn
+logseq/.git
+
+# logseq-publish çıktısı (zaten GitHub Pages'e gidiyor)
+public/
+
+# Sistem dosyaları
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+
+# IDE/Editor dosyaları
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Log dosyaları
+*.log
