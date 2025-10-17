@@ -1,3 +1,5 @@
+# deploy.yml dosyasını düzeltelim
+cat > .github/workflows/deploy.yml << 'EOF'
 name: Deploy Logseq Graph to GitHub Pages
 
 on:
@@ -19,7 +21,7 @@ jobs:
           node-version: 18
 
       - name: Install logseq-publish
-        run: npm install -g @pengx17/logseq-publish
+        run: npm install -g logseq-publish
 
       - name: Build static site
         run: logseq-publish --base /logseq-seyirdefterim --output public
@@ -29,3 +31,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+EOF
